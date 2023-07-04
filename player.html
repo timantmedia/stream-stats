@@ -21,7 +21,7 @@
 	width: 25%;
 }
 </style>
-
+<!-- Javascript included from a JS directory -->
 <script src="js/viewercount.js"></script>
 </head>
 <body>
@@ -44,7 +44,8 @@
 					<img src="images/loading.gif" />
 				</div>
 				<video id="remoteVideo" autoplay controls playsinline ></video>
-        <stream-stats stream-id=""></stream-stats>
+				<!-- Web Component added below the video player -->
+                                <stream-stats stream-id=""></stream-stats>
 			</div>
 			<div class="form-group col-sm-12 text-left">
 				<input type="text" class="form-control"
@@ -263,7 +264,8 @@
 	function startPlaying() {
 		streamId = streamNameBox.value;
 		webRTCAdaptor.play(streamNameBox.value, token, "", [], subscriberId, subscriberCode);
-    document.getElementsByTagName("stream-stats")[0].setAttribute("stream-id", streamId);
+		// update the components attribute according to the stream id thats playing. 
+                document.getElementsByTagName("stream-stats")[0].setAttribute("stream-id", streamId);
 	}
 
 	function stopPlaying() {
