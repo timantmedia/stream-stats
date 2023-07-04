@@ -8,7 +8,7 @@ class StreamStatsComponent extends HTMLElement {
       </style>
       <div>
         <h2>Stream Statistics</h2>
-        <p id="stats-info">Loading...</p>
+        <p id="stats-info">0</p>
       </div>
     `;
   }
@@ -16,7 +16,7 @@ class StreamStatsComponent extends HTMLElement {
   connectedCallback() {
     const streamId = this.getAttribute('stream-id');
     if (streamId) {
-      const apiUrl = `http://localhost:5080/LiveApp/rest/v2/broadcasts/${streamId}/broadcast-statistics`;
+      const apiUrl = `http://localhost:5080/viewercount.jsp?streamid=${streamId}`;
       this.fetchStreamStats(apiUrl);
 
       // Listen for the first play event of the video
@@ -38,6 +38,18 @@ class StreamStatsComponent extends HTMLElement {
 
   handleFirstPlay(apiUrl) {
     this.fetchStreamStats(apiUrl);
+  }
+
+  static get observedAttributes() {
+    return ["stream-id"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue === newValue) {
+     return;
+   }
+      
+    this.connectedCallback();
   }
 
   fetchStreamStats(apiUrl) {
