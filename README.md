@@ -12,5 +12,6 @@ Then add the web component wherever you want to display the current live streams
 Pass the stream Id into the `stream-id` attribute. 
 
 ```html
-<stream-stats stream-id="bigbuckbunny"></stream-stats>
+<!-- stream-id is updated automatically using the provided player.html file -->
+<stream-stats stream-id=""></stream-stats>
 ```
