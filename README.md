@@ -12,6 +12,18 @@ Please note that you will need to update the URL assigned to variable `apiUrl` i
 const apiUrl = `http://localhost:5080/viewercount.jsp?streamid=${streamId}`;
 ```
 
+In the provided player.html file, the necessary edits have been made. It assumes that the Javascript file is located in the `js` directory and the viewer counts are to be displayed under the video player. 
+
+The method `startPlaying()` has also been modified to update the `stream-id` when the "Start Playing" button is pressed:
+
+```js
+function startPlaying() {
+  ......
+  // update the components attribute according to the stream id thats playing. 
+  document.getElementsByTagName("stream-stats")[0].setAttribute("stream-id", streamId);
+}
+```
+
 ```html
 <!-- include the web component JavaScript file -->
 <script src="stream-stats.js"></script>
