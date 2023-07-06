@@ -16,7 +16,7 @@ class StreamStatsComponent extends HTMLElement {
   connectedCallback() {
     const streamId = this.getAttribute('stream-id');
     if (streamId) {
-      const apiUrl = `http://localhost:5080/viewercount.jsp?streamid=${streamId}`;
+      const apiUrl = `http://localhost:5080/LiveApp/viewercount.jsp?streamid=${streamId}`;
       this.fetchStreamStats(apiUrl);
 
       // Listen for the first play event of the video
